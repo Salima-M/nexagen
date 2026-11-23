@@ -63,11 +63,6 @@ section{padding:72px 0;border-top:1px solid var(--line)}
 .av{width:56px;height:56px;border-radius:50%;background:var(--ink);color:var(--white);display:grid;place-items:center;font:700 1.1rem var(--head)}
 .person small{color:var(--muted);display:block}
 .contact p{margin-bottom:14px}
-form{max-width:520px;margin-top:20px}
-label{display:block;font-weight:500;margin:16px 0 6px}
-input:not([type=hidden]):not([type=checkbox]),textarea{width:100%;font:inherit;padding:11px 13px;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink)}
-form button{margin-top:20px;cursor:pointer;font:inherit;font-weight:500}
-#status{margin:14px 0 0;min-height:1.6em}
 footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
 
 @media(max-width:720px){.two{grid-template-columns:1fr}section{padding:52px 0}}
@@ -129,6 +124,8 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-s
     <p>Our current work.</p>
     <div class="grid">
       <div class="item"><h3>Phycorestore</h3><p>Restoring aquatic ecosystems and building ecosystems that stay resilient in harsh conditions.</p></div>
+      <div class="item"><h3>Protein Environment</h3><p>Mutasiya nöqtələrinin tədqiqi.</p></div>
+      <div class="item"><h3>ATP Evolution</h3><p>ATP sintezi strukturlarının təkamül xəritəsi.</p></div>
     </div>
   </div>
 </section>
@@ -148,20 +145,10 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 <section class="contact alt" id="contact">
   <div class="wrap">
     <h2>Contact</h2>
-    <p>Want to join, collaborate, or ask a question? Send us a message.</p>
-    <form id="form" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="dc529fe5-5001-41b1-9d53-acf7c59cb0a5">
-      <input type="hidden" name="subject" value="New message from the NexaGen website">
-      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
-      <label for="n">Name</label>
-      <input id="n" name="name" required autocomplete="name">
-      <label for="e">Email</label>
-      <input id="e" name="email" type="email" required autocomplete="email">
-      <label for="m">Message</label>
-      <textarea id="m" name="message" rows="5" required></textarea>
-      <button class="btn main" type="submit">Send message</button>
-      <p id="status" role="status" aria-live="polite"></p>
-    </form>
+    <p>Want to join, collaborate, or ask a question? Reach out by email.</p>
+    <div class="btns">
+      <a class="btn main" href="mailto:nexagen.bioinfo@gmail.com">Email nexagen.bioinfo@gmail.com</a>
+    </div>
     <p style="margin-top:28px">You can also follow us on <a href="https://www.linkedin.com/company/susan-hasanova-7a659a276/" target="_blank" rel="noopener">LinkedIn</a>.</p>
   </div>
 </section>
@@ -181,21 +168,6 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-s
     }
     row.innerHTML=h;el.appendChild(row);
   }
-})();
-
-(function(){
-  var f=document.getElementById('form'),st=document.getElementById('status'),b=f.querySelector('button');
-  f.addEventListener('submit',function(ev){
-    ev.preventDefault();b.disabled=true;st.textContent='Sending…';
-    fetch(f.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)})
-      .then(function(r){return r.json()})
-      .then(function(d){
-        if(d.success){st.textContent='Thank you! Your message was sent.';f.reset()}
-        else{st.textContent='Could not send the message. Please try again.'}
-      })
-      .catch(function(){st.textContent='Could not send the message. Check your connection and try again.'})
-      .finally(function(){b.disabled=false});
-  });
 })();
 </script>
 </body>
